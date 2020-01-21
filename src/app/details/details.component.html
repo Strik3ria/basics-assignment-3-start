@@ -1,0 +1,12 @@
+
+<label>Username: </label>
+<input type="text" class="forms-control" [(ngModel)]="inputUsername">
+<br>
+<label>Password: </label>
+<input type="password" class="forms-control" [(ngModel)]="userPassword">
+<hr>
+<p>{{details}}</p>
+<hr>
+<button (click)="getDetails()">Display Details</button>
+<hr>
+<p *ngFor="let log of logEntries" id="log">{{log.username}} {{log.status}} {{log.dateTime}}</p>
