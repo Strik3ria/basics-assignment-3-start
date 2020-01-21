@@ -8,13 +8,13 @@ import { LogEntry } from '../Common/LogEntry';
 })
 export class DetailsComponent implements OnInit {
   inputUsername = '';
+  inputPassword = '';
   user = 'testuser';
   password = 'password';
-  userPassword = '';
   details = '';
   dateTime: Date;
   log: LogEntry;
-  logEntries: LogEntry[] ;
+  logEntries: LogEntry[] = new Array();
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class DetailsComponent implements OnInit {
   }
 
   validatePassword() {
-    return (this.inputUsername === this.user && this.password === this.userPassword);
+    return (this.inputUsername === this.user && this.password === this.inputPassword);
   }
 
   getDetails() {
