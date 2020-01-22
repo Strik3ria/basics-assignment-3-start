@@ -12,9 +12,11 @@ export class DetailsComponent implements OnInit {
   user = 'testuser';
   password = 'password';
   details = '';
+  showSecret = false;
   dateTime: Date;
   log: LogEntry;
   logEntries: LogEntry[] = new Array();
+  logNumber = 1;
 
   constructor() { }
 
@@ -27,14 +29,18 @@ export class DetailsComponent implements OnInit {
 
   getDetails() {
     if (this.validatePassword()) {
+      this.showSecret = true;
       this.dateTime = new Date();
-      this.log = new LogEntry(this.inputUsername, 'success', this.dateTime);
+      this.log = new LogEntry(this.logNumber, this.inputUsername, 'success', this.dateTime);
+      this.logNumber++;
       this.details = 'Details about ' + this.inputUsername + ' ' + this.dateTime;
       this.logEntries.push(this.log);
     } else {
+      this.showSecret = false;
       this.dateTime = new Date();
       this.details = 'Login failure recorded';
-      this.log = new LogEntry(this.inputUsername, 'failure', this.dateTime);
+      this.log = new LogEntry(this.logNumber, this.inputUsername, 'failure', this.dateTime);
+      this.logNumber++;
       this.logEntries.push(this.log);
     }
   }

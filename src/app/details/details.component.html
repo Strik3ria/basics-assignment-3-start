@@ -5,8 +5,12 @@
 <label>Password: </label>
 <input type="password" class="forms-control" [(ngModel)]="inputPassword">
 <hr>
-<p>{{details}}</p>
+<p *ngIf="showSecret">{{details}}</p>
 <hr>
-<button (click)="getDetails()">Display Details</button>
+<button class="btn btn-primary" (click)="getDetails()">Display Details</button>
 <hr>
-<p *ngFor="let log of logEntries" id="log">{{log.username}} {{log.status}} {{log.dateTime}}</p>
+<div *ngIf="showSecret">
+    <p *ngFor="let log of logEntries" 
+        [ngStyle]="{backgroundColor: log.status == 'success' ? 'palegreen' : 'rgb(192, 80, 80)'}" 
+        id="log">{{log.id}} {{log.username}} {{log.status}} {{log.dateTime}}</p>
+</div>
